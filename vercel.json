@@ -23,12 +23,22 @@
       "dest": "/frontend/dist/$1"
     }
   ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/server.js"
+    },
+    {
+      "source": "/((?!api).*)",
+      "destination": "/frontend/dist/index.html"
+    }
+  ],
   "functions": {
     "server.js": {
       "maxDuration": 30
     }
   },
-  "outputDirectory": "frontend/dist",
   "installCommand": "npm install && cd frontend && npm install",
-  "buildCommand": "cd frontend && npm run build"
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/dist"
 }
